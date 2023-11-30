@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import { useState } from 'react';
 
 function BucketForm(props) {
@@ -14,6 +16,7 @@ function BucketForm(props) {
       eagerness = 'low';
     }
 
+    // eslint-disable-next-line react/prop-types
     props.onSubmit({
       id: Math.random(Math.floor() * 1000),
       text: input,
@@ -30,6 +33,7 @@ function BucketForm(props) {
 
   // First we check to see if "edit" prop exists. If not, we render the normal form
   // If the prop "edit" exists, we know to render the update form instead
+  // eslint-disable-next-line react/prop-types
   return !props.edit ? (
     <div>
       <form className="bucket-form" onSubmit={handleSubmit}>
