@@ -8,12 +8,16 @@ function Bucket(props) {
     eagerness: '',
   });
 
-  console.log(props.bucket);
+  console.log("props.bucket: ", props.bucket);
 
   const submitUpdate = (value) => {
-    console.log(value);
+    console.log('edit: ', edit);
     // TODO: Write logic to update the `edit` value in state after a user updates an entry in the list
-    // setEdit({id: value.id, value: value.text, eagerness: value.eagerness}) 
+    setEdit({value: value.text, eagerness: value.eagerness});
+
+    const target = props.bucket.find(obj => obj.id === edit.id);
+    target.text = value.text;
+    target.eagerness = value.eagerness;
     // TODO: Set the key:value pairs in the `edit` object back to empty strings
     setEdit({ id: null, value: '', eagerness: '' });
   };
@@ -32,11 +36,9 @@ function Bucket(props) {
         {item.text}
       </div>
       <div className="icons">
-        <p onClick={() => setEdit({ id: item.id, value: item.text, eagerness: item.eagerness })}>
-          :pencil2:
+        <p onClick={() => setEdit({ id: item.id, value: item.text, eagerness: item.eagerness })}> ✏️
         </p>
-        <p onClick={() => props.removeBucketItem(item.id)}>
-          :wastebasket:
+        <p onClick={() => props.removeBucketItem(item.id)}> 🗑️
         </p>
       </div>
     </div>
