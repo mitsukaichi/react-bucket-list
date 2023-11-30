@@ -24,21 +24,20 @@ function Bucket(props) {
   }
 
   return props.bucket.map((item, index) => (
-    // TODO: Add a className of `bucket row complete ${item.eagerness}` for completed items, and `bucket-row ${item.eagerness}` for non-completed items
-   
-    // TODO: Add a key attribute set to the value of the index position
-    // Hint: use a ternary operator
-    <div className={`bucket-row ${item.isComplete?'complete':''} ${item.eagerness}` } key={index}>
-
-   
-      <div key={index} onClick={completeBucketItem}>
-          {item.value}
+    <div
+      className={`bucket-row ${item.isComplete ? 'complete' : ''} ${item.eagerness}`}
+      key={index}
+    >
+      <div onClick={() => props.completeBucketItem(item.id)}>
+        {item.value}
       </div>
       <div className="icons">
-     
-        <p onClick={setEdit({id: value.id, value: value.value, eagerness: value.eagerness})}> ✏️</p>
-        {/* TODO: Add an onClick event that will invoke the removeBucketItem method passing in the `item.id` */}
-        <p onClick={removeBucketItem}> 🗑️</p>
+        <p onClick={() => setEdit({ id: item.id, value: item.value, eagerness: item.eagerness })}>
+          :pencil2:
+        </p>
+        <p onClick={() => props.removeBucketItem(item.id)}>
+          :wastebasket:
+        </p>
       </div>
     </div>
   ));
