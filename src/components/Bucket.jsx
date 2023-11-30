@@ -14,7 +14,6 @@ function Bucket(props) {
 
     // TODO: Write logic to update the `edit` value in state after a user updates an entry in the list
       setEdit({id: value.id, value: value.value, eagerness: value.eagerness}) 
-
     // TODO: Set the key:value pairs in the `edit` object back to empty strings
       setEdit({id: null, value: '', eagerness: ''})
   };
@@ -31,12 +30,12 @@ function Bucket(props) {
     // Hint: use a ternary operator
     <div className={`bucket-row ${item.isComplete?'complete':''} ${item.eagerness}` } key={index}>
 
-      // TODO: Add an onClick event that invokes the `completeBucketItem` method passing the item id as a argument
+   
       <div key={index} onClick={completeBucketItem}>
           {item.value}
       </div>
       <div className="icons">
-        // TODO: Add an onClick event update the `edit` object with the `id`, `value`, and `eagerness` properties
+     
         <p onClick={setEdit({id: value.id, value: value.value, eagerness: value.eagerness})}> ✏️</p>
         {/* TODO: Add an onClick event that will invoke the removeBucketItem method passing in the `item.id` */}
         <p onClick={removeBucketItem}> 🗑️</p>
